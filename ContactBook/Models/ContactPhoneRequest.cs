@@ -8,8 +8,8 @@ namespace ContactBook.Models
 {
     public class ContactPhoneRequest : EntityModel
     {
+        public int ContactId { get; set; }
         [Required]
         public string Number { get; set; }
-        public int ContactId { get; set; }
     }
 }

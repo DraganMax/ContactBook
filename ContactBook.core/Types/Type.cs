@@ -9,6 +9,7 @@ namespace ContactBook.core.Types
     public enum Type
     {
         Personal = 1,
-        Work = 2
+        Work = 2,
+        Other = 3
     }
 }

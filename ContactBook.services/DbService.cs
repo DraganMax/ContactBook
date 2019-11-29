@@ -22,7 +22,7 @@ namespace ContactBook.services
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-
+            
             _ctx.Set<T>().Add(entity);
             _ctx.SaveChanges();
 

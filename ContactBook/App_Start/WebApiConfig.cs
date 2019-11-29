@@ -11,7 +11,7 @@ namespace ContactBook
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            StructuremapWebApi.Start();
+            //StructuremapWebApi.Start();
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -23,6 +23,8 @@ namespace ContactBook
             var formatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             formatter.SerializerSettings.ContractResolver =
                 new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+                = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

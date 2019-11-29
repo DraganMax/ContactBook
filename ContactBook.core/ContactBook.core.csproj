@@ -49,9 +49,12 @@
     <Compile Include="Models\ContactPhone.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAdressService.cs" />
     <Compile Include="Services\IContactService.cs" />
     <Compile Include="Services\IDbService.cs" />
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="Services\IEntityService.cs" />
+    <Compile Include="Services\IPhoneService.cs" />
     <Compile Include="Services\ServiceResult.cs" />
     <Compile Include="Types\Type.cs" />
   </ItemGroup>

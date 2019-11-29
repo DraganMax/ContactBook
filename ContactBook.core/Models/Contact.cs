@@ -20,7 +20,7 @@ namespace ContactBook.data.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Company { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public virtual ICollection<ContactAdress> Adresses { get; set; }
         public virtual ICollection<ContactPhone> Phones { get; set; }
         public virtual ICollection<ContactEmail> Emails { get; set; }

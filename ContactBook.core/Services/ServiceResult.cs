@@ -9,6 +9,7 @@ namespace ContactBook.core.Services
 {
     public class ServiceResult
     {
+        public int Id { get; }
         public bool Succeeded { get; private set; }
 
         private readonly List<string> errors = new List<string>();

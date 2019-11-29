@@ -7,7 +7,7 @@ namespace ContactBook.Models
 {
     public class ContactEmailRequest : EntityModel
     {
-        public string Email { get; set; }
         public int ContactId { get; set; }
+        public string Email { get; set; }
     }
 }

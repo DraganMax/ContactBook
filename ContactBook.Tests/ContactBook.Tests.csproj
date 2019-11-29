@@ -100,7 +100,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\ValuesControllerTest.cs" />
+    <Compile Include="ContactValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -109,6 +109,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContactBook.core\ContactBook.core.csproj">
+      <Project>{0042EF43-9191-4B89-BFCB-52D51AAA36BD}</Project>
+      <Name>ContactBook.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContactBook.services\ContactBook.services.csproj">
+      <Project>{388408db-cbfa-4adc-a248-14ce0de4b0b8}</Project>
+      <Name>ContactBook.services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContactBook\ContactBook.csproj">
       <Project>{DCFE8A67-0C9D-4E70-A0CD-8A4D115E5592}</Project>
       <Name>ContactBook</Name>

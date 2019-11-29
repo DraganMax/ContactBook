@@ -62,6 +62,34 @@
     <Compile Include="Migrations\201911101332353_UpdateTables.designer.cs">
       <DependentUpon>201911101332353_UpdateTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911131246234_UpdateOfBirthday.cs" />
+    <Compile Include="Migrations\201911131246234_UpdateOfBirthday.designer.cs">
+      <DependentUpon>201911131246234_UpdateOfBirthday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911141455522_AdressUpdate.cs" />
+    <Compile Include="Migrations\201911141455522_AdressUpdate.designer.cs">
+      <DependentUpon>201911141455522_AdressUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911142146238_UpdatingTables.cs" />
+    <Compile Include="Migrations\201911142146238_UpdatingTables.designer.cs">
+      <DependentUpon>201911142146238_UpdatingTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911191640320_Update.cs" />
+    <Compile Include="Migrations\201911191640320_Update.designer.cs">
+      <DependentUpon>201911191640320_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911191659221_NewUpdate.cs" />
+    <Compile Include="Migrations\201911191659221_NewUpdate.designer.cs">
+      <DependentUpon>201911191659221_NewUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261133369_ContactId_Update.cs" />
+    <Compile Include="Migrations\201911261133369_ContactId_Update.designer.cs">
+      <DependentUpon>201911261133369_ContactId_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261140549_ContactId_not_null.cs" />
+    <Compile Include="Migrations\201911261140549_ContactId_not_null.designer.cs">
+      <DependentUpon>201911261140549_ContactId_not_null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +103,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911101332353_UpdateTables.resx">
       <DependentUpon>201911101332353_UpdateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911131246234_UpdateOfBirthday.resx">
+      <DependentUpon>201911131246234_UpdateOfBirthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911141455522_AdressUpdate.resx">
+      <DependentUpon>201911141455522_AdressUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911142146238_UpdatingTables.resx">
+      <DependentUpon>201911142146238_UpdatingTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911191640320_Update.resx">
+      <DependentUpon>201911191640320_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911191659221_NewUpdate.resx">
+      <DependentUpon>201911191659221_NewUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261133369_ContactId_Update.resx">
+      <DependentUpon>201911261133369_ContactId_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261140549_ContactId_not_null.resx">
+      <DependentUpon>201911261140549_ContactId_not_null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -23,7 +23,8 @@ namespace ContactBook.DependencyResolution {
     using ContactBook.services;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
+    using StructureMap;
+
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
@@ -39,6 +40,11 @@ namespace ContactBook.DependencyResolution {
             For<IContactDbContext>().Use<ContactDbContext>().Transient();
             For<IDbService>().Use<DbService>();
             For(typeof(IEntityService<>)).Use(typeof(EntityService<>));
+            For<IContactService>().Use<ContactService>();
+            For<IPhoneService>().Use<PhoneService>();
+            For<IAdressService>().Use<AdressService>();
+            For<IEmailService>().Use<EmailService>();
+
             var mapper = AutoMapperConfig.GetMapper();
             For<IMapper>().Use(mapper).Singleton();
         }

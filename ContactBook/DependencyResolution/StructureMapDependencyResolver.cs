@@ -23,19 +23,21 @@ namespace ContactBook.DependencyResolution
     /// <summary>
     /// The structure map dependency resolver.
     /// </summary>
-    public class StructureMapWebApiDependencyResolver : StructureMapWebApiDependencyScope, IDependencyResolver
+    public class StructureMapDependencyResolver : StructureMapApiScope, IDependencyResolver
     {
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StructureMapWebApiDependencyResolver"/> class.
+        /// Initializes a new instance of the <see cref="StructureMapDependencyResolver"/> class.
         /// </summary>
         /// <param name="container">
         /// The container.
         /// </param>
-        public StructureMapWebApiDependencyResolver(IContainer container)
+        private readonly IContainer _container;
+        public StructureMapDependencyResolver(IContainer container)
             : base(container)
         {
+            _container = container;
         }
 
         #endregion
@@ -50,8 +52,8 @@ namespace ContactBook.DependencyResolution
         /// </returns>
         public IDependencyScope BeginScope()
         {
-            IContainer child = this.Container.GetNestedContainer();
-            return new StructureMapWebApiDependencyResolver(child);
+            IContainer child = this._container.GetNestedContainer();
+            return new StructureMapDependencyResolver(child);
         }
 
         #endregion
