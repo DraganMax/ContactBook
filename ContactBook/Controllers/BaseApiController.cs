@@ -4,7 +4,6 @@ using ContactBook.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web.Http;
 
 namespace ContactBook.Controllers
@@ -13,10 +12,16 @@ namespace ContactBook.Controllers
     {
         protected readonly IMapper _mapper;
         protected readonly IContactService _contactService;
+        protected readonly IPhoneService _phoneService;
+        //protected readonly IEmailService _emailService;
 
-        public BaseApiController(IContactService contactService, IMapper mapper)
+        public BaseApiController(IContactService contactService,
+            IPhoneService phoneService,// IEmailService emailService,
+            IMapper mapper)
         {
             _contactService = contactService;
+            _phoneService = phoneService;
+            //_emailService = emailService;
             _mapper = mapper;
         }
         public static bool IsValidContact(ContactRequest contact)
@@ -44,9 +49,10 @@ namespace ContactBook.Controllers
                 return false;
             }
         }
-        public static bool ValidPhone(ContactPhoneRequest phone)
+        public static bool ValidPhone(ContactRequest contact)
         {
-            string correctPhone = phone.Number.Trim();
+            var phone = contact.Phones.Select(a => a.Number.Trim());
+            string correctPhone = phone.ToString();
             if (phone == null || string.IsNullOrEmpty(correctPhone) || correctPhone.Any(char.IsLetter)
                 || correctPhone.Length < 8 || correctPhone.Length > 8)
                 return false;

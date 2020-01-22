@@ -28,6 +28,18 @@ namespace ContactBook.services
             updated.Surname = contact.Surname;
             updated.Company = contact.Company;
             updated.Birthday = contact.Birthday;
+            foreach(var number in contact.Phones)
+            {
+                var updatedPhone = updated.Phones.Where(pn => pn.Id == contact.Id).FirstOrDefault();
+                if (updatedPhone == null)
+                {
+                    contact.Phones.Add(number);
+                }
+                else
+                {
+                    updatedPhone.Number = number.Number; 
+                }
+            }
             return contact == null ? new ServiceResult(true) : Update(updated);
         }
         public async Task<ServiceResult> DeleteContactById(int id)

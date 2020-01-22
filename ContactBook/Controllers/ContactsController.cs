@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
+using ContactBook.core.Models;
 using ContactBook.core.Services;
 using ContactBook.data.Models;
 using ContactBook.Models;
@@ -10,16 +11,17 @@ namespace ContactBook.Controllers
 {
     public class ContactsController : BaseApiController
     {
-        public ContactsController(IContactService contactService, IMapper mapper)
-            : base(contactService, mapper)
-        { 
+        public ContactsController(IContactService contactService, IPhoneService phoneService,
+            IEmailService emailService, IMapper mapper)
+            : base(contactService, phoneService, mapper)
+        {
 
         }
 
         // GET api/contacts
         [HttpGet]
         [Route("api/contacts")]
-        public async Task<IHttpActionResult> GetContacts() 
+        public async Task<IHttpActionResult> GetContacts()
         {
             var contacts = await _contactService.GetContacts();
             return Ok(contacts.Select(f => _mapper.Map<ContactRequest>(f)).ToList());
@@ -42,11 +44,13 @@ namespace ContactBook.Controllers
         [Route("api/contacts")]
         public async Task<IHttpActionResult> AddContact(ContactRequest contact)
         {
-            if (!IsValidContact(contact) || !ValidBirthDay(contact))
+            if (!IsValidContact(contact) || !ValidBirthDay(contact) || !ValidPhone(contact))
             {
                 return BadRequest();
             }
+            
             var result = await _contactService.AddContact(_mapper.Map<Contact>(contact));
+
             if (!result.Succeeded)
             {
                 return Conflict();

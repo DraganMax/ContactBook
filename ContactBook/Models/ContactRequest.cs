@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactBook.Models
 {
@@ -11,7 +12,9 @@ namespace ContactBook.Models
             Emails = new List<ContactEmailRequest>();
             Adresses = new List<ContactAdressRequest>();
         }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Surname { get; set; }
         public string Company { get; set; }
         public DateTime? Birthday { get; set; }
