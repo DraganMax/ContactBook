@@ -44,7 +44,7 @@ namespace ContactBook.Controllers
         [Route("api/contacts")]
         public async Task<IHttpActionResult> AddContact(ContactRequest contact)
         {
-            if (!IsValidContact(contact) || !ValidBirthDay(contact) || !ValidPhone(contact))
+            if (!IsValidContact(contact) || !ValidBirthDay(contact))
             {
                 return BadRequest();
             }
