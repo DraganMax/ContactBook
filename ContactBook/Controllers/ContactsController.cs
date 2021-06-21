@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
-using AutoMapper;
-using ContactBook.core.Models;
+﻿using AutoMapper;
 using ContactBook.core.Services;
 using ContactBook.data.Models;
 using ContactBook.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace ContactBook.Controllers
 {
@@ -14,9 +14,7 @@ namespace ContactBook.Controllers
         public ContactsController(IContactService contactService, IPhoneService phoneService,
             IEmailService emailService, IMapper mapper)
             : base(contactService, phoneService, mapper)
-        {
-
-        }
+        { }
 
         // GET api/contacts
         [HttpGet]
@@ -37,6 +35,7 @@ namespace ContactBook.Controllers
             {
                 return NotFound();
             }
+
             return Ok(_mapper.Map<ContactRequest>(contact));
         }
 
@@ -44,9 +43,9 @@ namespace ContactBook.Controllers
         [Route("api/contacts")]
         public async Task<IHttpActionResult> AddContact(ContactRequest contact)
         {
-            if (!IsValidContact(contact) || !ValidBirthDay(contact))
+            if (!IsValidContact(contact) || !ValidBirthDay(contact) || !ValidPhone(contact) || !ValidEmail(contact))
             {
-                return BadRequest();
+                return BadRequest("Invalid contact information");
             }
             
             var result = await _contactService.AddContact(_mapper.Map<Contact>(contact));
@@ -55,6 +54,7 @@ namespace ContactBook.Controllers
             {
                 return Conflict();
             }
+
             return Created(string.Empty, contact);
         }
 
@@ -62,7 +62,7 @@ namespace ContactBook.Controllers
         [Route("api/contacts/{id}")]
         public async Task<IHttpActionResult> UpdateContact(ContactRequest contact)
         {
-            if (!ValidBirthDay(contact) || !IsValidContact(contact))
+            if (!ValidBirthDay(contact) || !IsValidContact(contact) || !ValidPhone(contact) || !ValidEmail(contact))
             {
                 return BadRequest();
             }
@@ -72,6 +72,7 @@ namespace ContactBook.Controllers
             {
                 return Conflict();
             }
+
             return Ok(contact);
         }
         [HttpGet]
@@ -84,6 +85,7 @@ namespace ContactBook.Controllers
             {
                 return NotFound();
             }
+
             return Ok(contacts.ToList());
         }
 

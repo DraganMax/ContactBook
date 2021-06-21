@@ -28,11 +28,8 @@ export default {
     return {
       isShown: false
     }
-  },
-   methods: {
-
-   }
   }
+}
 </script>
 
 <style>
@@ -45,6 +42,7 @@ export default {
   color: #2c3e50;
   
 }
+
 img
 {
   height: 200px;

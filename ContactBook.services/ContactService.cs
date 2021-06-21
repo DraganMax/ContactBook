@@ -1,11 +1,9 @@
 ﻿using ContactBook.core.Services;
 using ContactBook.data.Models;
 using ContactBookService.data;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ContactBook.services
@@ -13,9 +11,8 @@ namespace ContactBook.services
     public class ContactService : EntityService<Contact>, IContactService
     {
         public ContactService(IContactDbContext context) : base(context)
-        {
+        { }
 
-        }
         public async Task<ServiceResult> AddContact(Contact contact)
         {
             return Create(contact);
@@ -23,25 +20,27 @@ namespace ContactBook.services
 
         public async Task<ServiceResult> UpdateContact(Contact contact)
         {
-            var updated = await GetById(contact.Id);
+            var updated = await GetContactById(contact.Id);
             updated.Name = contact.Name;
             updated.Surname = contact.Surname;
             updated.Company = contact.Company;
             updated.Birthday = contact.Birthday;
-            foreach(var number in contact.Phones)
-            {
-                var updatedPhone = updated.Phones.Where(pn => pn.Id == contact.Id).FirstOrDefault();
-                if (updatedPhone == null)
-                {
-                    contact.Phones.Add(number);
-                }
-                else
-                {
-                    updatedPhone.Number = number.Number; 
-                }
-            }
+            //foreach(var number in contact.Phones)
+            //{
+            //    var updatedPhone = updated.Phones.Where(pn => pn.Id == contact.Id).FirstOrDefault();
+            //    if (updatedPhone == null)
+            //    {
+            //        contact.Phones.Add(number);
+            //    }
+            //    else
+            //    {
+            //        updatedPhone.Number = number.Number; 
+            //    }
+            //}
+
             return contact == null ? new ServiceResult(true) : Update(updated);
         }
+
         public async Task<ServiceResult> DeleteContactById(int id)
         {
             var contact = await GetById(id);
@@ -57,6 +56,7 @@ namespace ContactBook.services
         {
             return await GetById(id);
         }
+
         public async Task<IEnumerable<Contact>> SearchContact(string search)
         {
             search = search.ToLower().Trim();
@@ -67,6 +67,7 @@ namespace ContactBook.services
                 c.Phones.Any(b => b.Number.ToLower().Contains(search))));
             return await contact.ToListAsync();
         }
+
         public async Task DeleteContacts()
         {
             _ctx.Contacts.RemoveRange(_ctx.Contacts);

@@ -17,7 +17,7 @@ namespace ContactBook.services
         {
 
         }
-        public async Task<ServiceResult> AddPhone(ContactPhone phone)
+        public ServiceResult AddPhone(ContactPhone phone)
         {
             return Create(phone);
         }

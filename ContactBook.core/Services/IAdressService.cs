@@ -1,16 +1,14 @@
 ﻿using ContactBookService.core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ContactBook.core.Services
 {
-    public interface IAdressService : IEntityService<ContactAdress>
+    public interface IAdressService : IEntityService<ContactAddress>
     {
-        Task<ServiceResult> AddAdress(ContactAdress adress);
+        ServiceResult AddAdress(ContactAddress adress);
+
         Task<ServiceResult> DeleteAdressById(int id);
-        Task<ServiceResult> UpdateAdress(ContactAdress adress);
+
+        Task<ServiceResult> UpdateAdress(ContactAddress adress);
     }
 }

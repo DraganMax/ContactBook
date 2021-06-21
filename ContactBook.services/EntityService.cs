@@ -20,10 +20,12 @@ namespace ContactBook.services
         {
             return Delete<T>(entity);
         }
+
         public virtual bool Exists(int id)
         {
             return QueryById(id).Any();
         }
+
         public virtual IEnumerable<T> Get()
         {
             return Get<T>();
@@ -33,6 +35,7 @@ namespace ContactBook.services
         {
             return await GetById<T>(id);
         }
+
         public virtual IQueryable<T> Query()
         {
             return Query<T>();
@@ -42,6 +45,7 @@ namespace ContactBook.services
         {
             return Query<T>().Where(t => t.Id == id);
         }
+
         public virtual ServiceResult Update(T entity)
         {
             return Update<T>(entity);

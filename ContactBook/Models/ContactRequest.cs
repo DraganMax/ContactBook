@@ -10,17 +10,23 @@ namespace ContactBook.Models
         {
             Phones = new List<ContactPhoneRequest>();
             Emails = new List<ContactEmailRequest>();
-            Adresses = new List<ContactAdressRequest>();
+            Addresses = new List<ContactAddressRequest>();
         }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public string Surname { get; set; }
-        public string Company { get; set; }
-        public DateTime? Birthday { get; set; }
-        public ICollection<ContactPhoneRequest> Phones { get; set; }
-        public ICollection<ContactEmailRequest> Emails { get; set; }
-        public ICollection<ContactAdressRequest> Adresses { get; set; }
 
+        public string Company { get; set; }
+
+        public DateTime? Birthday { get; set; }
+
+        public ICollection<ContactPhoneRequest> Phones { get; set; }
+
+        public ICollection<ContactEmailRequest> Emails { get; set; }
+
+        public ICollection<ContactAddressRequest> Addresses { get; set; }
     }
 }

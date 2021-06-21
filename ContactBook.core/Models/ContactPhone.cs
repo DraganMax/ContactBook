@@ -11,7 +11,9 @@ namespace ContactBook.core.Models
     public class ContactPhone : Entity
     {
         public string Number { get; set; }
+
         public int ContactId { get; set; }
+
         public virtual Contact Contact { get; set; }
     }
 }

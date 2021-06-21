@@ -2,8 +2,8 @@
 using ContactBook.core.Services;
 using ContactBook.Models;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Mail;
 using System.Web.Http;
 
 namespace ContactBook.Controllers
@@ -24,38 +24,52 @@ namespace ContactBook.Controllers
             //_emailService = emailService;
             _mapper = mapper;
         }
+
         public static bool IsValidContact(ContactRequest contact)
         {
             if (contact == null || string.IsNullOrEmpty(contact.Name) || string.IsNullOrEmpty(contact.Surname)
                 || contact.Name.Any(char.IsDigit) || contact.Surname.Any(char.IsDigit))
                 return false;
+
             return true;
         }
+
         public static bool ValidBirthDay(ContactRequest contact)
         {
             var birthDayDate = contact.Birthday;
             var todayDate = DateTime.Today;
             return DateTime.Compare(Convert.ToDateTime(birthDayDate), todayDate) <= 0;
         }
-        public static bool ValidEmail(ContactEmailRequest email)
+
+        public static bool ValidEmail(ContactRequest email)
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email.Email);
-                return addr.Address == email.Email;
+                bool validEmail = true;
+                var emails = email.Emails.Select(e => e.Email);
+                foreach (var e in emails)
+                {
+                    var addr = new MailAddress(e);
+                    validEmail = addr.Address == e;
+                }
+                return validEmail;
             }
             catch
             {
                 return false;
             }
         }
+
         public static bool ValidPhone(ContactRequest contact)
         {
-            var phone = contact.Phones.Select(a => a.Number.Trim());
-            string correctPhone = phone.ToString();
-            if (phone == null || string.IsNullOrEmpty(correctPhone) || correctPhone.Any(char.IsLetter)
-                || correctPhone.Length < 8 || correctPhone.Length > 8)
+            var phones = contact.Phones.Select(a => a.Number.Trim());
+            foreach(var number in phones)
+            {
+                if (phones == null || string.IsNullOrEmpty(number) || number.Any(char.IsLetter)
+                || number.Length != 8 || number[0] != '2')
                 return false;
+            }
+
             return true;
         }
     }

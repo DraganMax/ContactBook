@@ -3,11 +3,7 @@ using ContactBook.data.Models;
 using ContactBookService.core.Models;
 using ContactBookService.data.Migrations;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactBookService.data
 {
@@ -19,9 +15,13 @@ namespace ContactBookService.data
             Database.SetInitializer<ContactDbContext>(null);
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ContactDbContext, Configuration>());
         }
+
         public DbSet<Contact> Contacts { get; set; }
+
         public DbSet<ContactPhone> Phones { get; set; }
+
         public DbSet<ContactEmail> Emails { get; set; }
-        public DbSet<ContactAdress> Addresses { get; set; }
+
+        public DbSet<ContactAddress> Addresses { get; set; }
     }
 }

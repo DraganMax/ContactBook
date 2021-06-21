@@ -14,18 +14,19 @@ namespace ContactBook.services
     public class EmailService : EntityService<ContactEmail>, IEmailService
     {
         public EmailService(IContactDbContext context) : base(context)
-        {
+        { }
 
-        }
-        public async Task<ServiceResult> AddEmail(ContactEmail email)
+        public ServiceResult AddEmail(ContactEmail email)
         {
             return Create(email);
         }
+
         public async Task<ServiceResult> DeleteEmailById(int id)
         {
             var email = await GetById(id);
             return email == null ? new ServiceResult(true) : Delete(email);
         }
+
         public async Task<ServiceResult> UpdateEmail(ContactEmail email)
         {
             var updated = await GetById(email.Id);

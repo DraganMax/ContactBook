@@ -3,10 +3,6 @@ using ContactBook.core.Models;
 using ContactBook.data.Models;
 using ContactBook.Models;
 using ContactBookService.core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ContactBook.App_Start
 {
@@ -18,8 +14,8 @@ namespace ContactBook.App_Start
             {
                 cfg.CreateMap<Contact, ContactRequest>();
                 cfg.CreateMap<ContactRequest, Contact>();
-                cfg.CreateMap<ContactAdress, ContactAdressRequest>();
-                cfg.CreateMap<ContactAdressRequest, ContactAdress>().ForMember(x => x.Contact, y => y.Ignore());
+                cfg.CreateMap<ContactAddress, ContactAddressRequest>();
+                cfg.CreateMap<ContactAddressRequest, ContactAddress>().ForMember(x => x.Contact, y => y.Ignore());
                 cfg.CreateMap<ContactPhone, ContactPhoneRequest>();
                 cfg.CreateMap<ContactPhoneRequest, ContactPhone>().ForMember(x => x.Contact, y => y.Ignore());
                 cfg.CreateMap<ContactEmail, ContactEmailRequest>();

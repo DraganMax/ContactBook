@@ -18,14 +18,17 @@ namespace ContactBook.core.Services
         public ServiceResult()
         {
         }
+
         public ServiceResult(bool succeeded)
         {
             Succeeded = succeeded;
         }
+
         public ServiceResult(IEnumerable<string> errors)
         {
             Set(errors);
         }
+
         public ServiceResult Add(IEnumerable<string> errors)
         {
             foreach (string err in errors)
@@ -49,11 +52,13 @@ namespace ContactBook.core.Services
             Add(errors);
             return this;
         }
+
         public ServiceResult Set(bool success)
         {
             Succeeded = success;
             return this;
         }
+
         public ServiceResult Set(IEntity entity)
         {
             Entity = entity;

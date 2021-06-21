@@ -2,6 +2,7 @@
 using ContactBook.Controllers;
 using ContactBook.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework.Internal;
 
 namespace ContactBook.Tests
 {
@@ -35,6 +36,7 @@ namespace ContactBook.Tests
             Assert.IsFalse(BaseApiController.ValidBirthDay(contactWithImpossibleBirthday));
             Assert.IsTrue(BaseApiController.ValidBirthDay(contactWithRealBirthday));
         }
+
         [TestMethod]
         public void ValidEmailTest()
         {
@@ -46,6 +48,7 @@ namespace ContactBook.Tests
             //Assert.IsFalse(BaseApiController.ValidEmail(invalidEmail));
             //Assert.IsTrue(BaseApiController.ValidEmail(validEmail));
         }
+
         [TestMethod]
         public void ValidPhoneTest()
         {
